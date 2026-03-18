@@ -1,0 +1,85 @@
+/* css/style.css */
+
+/* --- Typography & Base Setup --- */
+body {
+    font-family: 'DM Sans', sans-serif;
+    /* Force body to fill viewport so panels can stretch */
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    /* Leave room for the fixed footer status bar */
+    padding-bottom: 35px; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'DM Sans', sans-serif;
+}
+
+blockquote {
+    font-family: 'Source Serif 4', serif;
+}
+
+/* --- Layout Mechanics --- */
+/* Required for scrollable flex children */
+.row {
+    min-height: 0; 
+}
+
+.scroll-container {
+    overflow-y: auto;
+    /* Smooth scrolling inside panels */
+    -webkit-overflow-scrolling: touch; 
+}
+
+/* --- Profile List (Left Panel) --- */
+.profile-item {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+}
+
+.profile-item:hover {
+    background-color: #f8f9fa;
+}
+
+.profile-item.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+
+.profile-item-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #e9ecef;
+}
+
+/* --- Profile Information (Centre Panel) --- */
+.profile-img-large {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #dee2e6;
+}
+
+/* --- Status Bar --- */
+#status-bar {
+    height: 35px;
+    line-height: 35px;
+    padding: 0;
+    transition: background-color 0.3s ease;
+    z-index: 1030; /* Keep above scrolling content */
+}
+
+.status-error {
+    background-color: #dc3545 !important; /* Bootstrap Danger Red */
+}
+.status-success {
+    background-color: #198754 !important; /* Bootstrap Success Green */
+}

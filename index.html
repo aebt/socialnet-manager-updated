@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SocialNet Manager</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">SocialNet Manager</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid flex-grow-1 d-flex flex-column overflow-hidden py-3">
+        <div class="row flex-grow-1 overflow-hidden h-100 g-3">
+            
+            <div class="col-12 col-md-3 d-flex flex-column h-100">
+                <div class="card h-100 shadow-sm border-0 d-flex flex-column">
+                    <div class="card-header bg-white border-bottom-0 pt-3">
+                        <h6 class="text-uppercase text-muted fw-bold mb-3">Profile Management</h6>
+                        <label class="form-label small">Add/Lookup Profile:</label>
+                        <input type="text" id="profile-input" class="form-control mb-2" placeholder="Enter profile name" />
+                        <div class="d-flex gap-2 mb-3">
+                            <button id="btn-add" class="btn btn-primary flex-fill btn-sm">Add</button>
+                            <button id="btn-lookup" class="btn btn-secondary flex-fill btn-sm">Lookup</button>
+                            <button id="btn-delete" class="btn btn-danger flex-fill btn-sm">Delete</button>
+                        </div>
+                        <h6 class="text-muted small mb-2">All Profiles:</h6>
+                    </div>
+                    <div class="card-body p-0 overflow-auto scroll-container">
+                        <ul id="profile-list" class="list-group list-group-flush">
+                            </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-5 d-flex flex-column h-100">
+                <div class="card h-100 shadow-sm border-0 overflow-auto scroll-container">
+                    <div class="card-body p-4">
+                        <h6 class="text-uppercase text-muted fw-bold mb-4">Profile Information</h6>
+                        
+                        <div class="d-flex align-items-center mb-4 gap-3">
+                            <img id="profile-image" src="https://via.placeholder.com/256" alt="Profile" class="profile-img-large shadow-sm" />
+                            <h2 id="profile-name" class="mb-0 fw-bold">Select a Profile</h2>
+                        </div>
+
+                        <div class="mb-4">
+                            <h6 class="text-muted small mb-1">Current Status:</h6>
+                            <div id="profile-status" class="p-3 bg-light rounded border text-secondary">
+                                No profile selected.
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h6 class="text-muted small mb-1">Favorite Quote:</h6>
+                            <blockquote class="p-3 bg-light rounded border border-start border-4 border-primary text-secondary fst-italic">
+                                "<span id="profile-quote">...</span>"
+                            </blockquote>
+                        </div>
+
+                        <div>
+                            <h6 class="text-muted small mb-2">Friends:</h6>
+                            <ul id="friends-list" class="list-group">
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 d-flex flex-column h-100">
+                <div class="card h-100 shadow-sm border-0 overflow-auto scroll-container">
+                    <div class="card-body p-4">
+                        <h6 class="text-uppercase text-muted fw-bold mb-4">Edit Profile</h6>
+                        
+                        <div class="mb-4">
+                            <label class="form-label small">Change Status:</label>
+                            <input type="text" id="status-input" class="form-control mb-2" placeholder="What's on your mind?" />
+                            <button id="btn-update-status" class="btn btn-outline-primary w-100 btn-sm">Update Status</button>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label small">Change Favorite Quote:</label>
+                            <textarea id="quote-input" class="form-control mb-2" rows="2" placeholder="Enter quote"></textarea>
+                            <button id="btn-update-quote" class="btn btn-outline-primary w-100 btn-sm">Update Quote</button>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label small">Change Picture:</label>
+                            <input type="file" id="picture-input" class="form-control mb-2" accept="image/png, image/jpeg, image/webp" />
+                            <button id="btn-update-picture" class="btn btn-primary w-100 btn-sm">Upload to Vercel</button>
+                        </div>
+
+                        <div>
+                            <label class="form-label small">Manage Friends:</label>
+                            <input type="text" id="friend-input" class="form-control mb-2" placeholder="Enter friend's exact name" />
+                            <div class="d-flex gap-2">
+                                <button id="btn-add-friend" class="btn btn-success flex-fill btn-sm">Add Friend</button>
+                                <button id="btn-remove-friend" class="btn btn-warning flex-fill btn-sm text-dark">Remove Friend</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer id="status-bar" class="bg-dark text-white text-center py-2 small fixed-bottom">
+        Ready. Select a profile to begin.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
