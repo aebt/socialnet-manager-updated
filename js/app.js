@@ -143,7 +143,7 @@ async function deleteProfile() {
         ui.profileName.innerText = "Select a Profile";
         ui.profileStatus.innerText = "No profile selected.";
         ui.profileQuote.innerText = "...";
-        ui.profileImage.src = "https://via.placeholder.com/256";
+        ui.profileImage.src = "https://1r3uutu0laz9llhm.public.blob.vercel-storage.com/avatars/default.webp";
         ui.friendsList.innerHTML = "";
         
         setStatus("Profile deleted successfully.");
