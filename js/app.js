@@ -213,6 +213,12 @@ async function selectProfile(profileId) {
         }
         
         setStatus(`Displaying ${profile.name}`);
+
+        // Add this auto-scroll logic for mobile screens!
+        if (window.innerWidth < 768) {
+            ui.profileImage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
     } catch (err) {
         setStatus(`Error loading profile details: ${err.message}`, true);
     }

@@ -83,3 +83,32 @@ blockquote {
 .status-success {
     background-color: #198754 !important; /* Bootstrap Success Green */
 }
+
+/* ==========================================
+   MOBILE LAYOUT FIXES
+   ========================================== */
+@media (max-width: 767.98px) {
+    /* 1. Release the height lock so the page can scroll */
+    body {
+        height: auto !important;
+        display: block !important;
+    }
+    
+    .overflow-hidden {
+        overflow: visible !important;
+    }
+    
+    .h-100 {
+        height: auto !important;
+    }
+    
+    /* 2. Shrink the first panel so it doesn't take up the entire screen */
+    .col-12.col-md-3 .card {
+        height: 350px !important; 
+    }
+    
+    /* 3. Add spacing between the stacked panels */
+    .col-12 {
+        margin-bottom: 1.5rem;
+    }
+}
